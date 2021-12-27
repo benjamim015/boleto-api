@@ -12,7 +12,8 @@ app.get('/boleto/:line', (req, res) => {
       amount: (boleto.amount / 100).toFixed(2),
       expirationDate: boleto.expirationDate.toLocaleDateString(),
     });
-  } catch (err) {
+  } catch (error) {
+    const err = error as Error;
     return res.status(400).json({
       error: err.message,
     });
